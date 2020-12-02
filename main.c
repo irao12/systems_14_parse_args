@@ -13,6 +13,7 @@ char ** parse_args ( char * line ){
 		a[counter] = token;
 		counter++;
 	}
+	a[counter] = NULL;
 	return a;
 }
 

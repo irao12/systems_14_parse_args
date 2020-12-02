@@ -4,19 +4,21 @@
 #include <unistd.h>
 
 char ** parse_args ( char * line ){
-	char *token, *p;
-	p = line;
-	int counter = 0;
-	char **a = malloc(6);
-	while (p != NULL){
-		token = strsep(&p, " ");
-		a[counter] = token;
-		counter++;
+	char **returnval = malloc(sizeof(char *) * 6);
+	int i = 0;
+	char *token;
+	char *curr = line;
+	while (curr != NULL){
+		token = strsep(&curr, " ");
+		returnval[i] = token;
+		i += 1;
 	}
-	return a;
+	returnval[i] = NULL;
+
+	return returnval;
 }
 
 int main(){
-	char ** args = parse_args("ls -a -l");
+	char ** arguments = parse_args("ls -a -l");
 	return 0;
 }
